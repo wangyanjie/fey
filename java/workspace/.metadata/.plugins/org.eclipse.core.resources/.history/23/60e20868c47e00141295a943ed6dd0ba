@@ -1,0 +1,10 @@
+package org.tool;
+
+import java.util.Date;
+
+public class Directory {
+	private String owner;
+	private int id;
+	private String name;
+	private Date createDate;
+}

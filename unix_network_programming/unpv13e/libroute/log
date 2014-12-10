@@ -1,0 +1,39 @@
+get_rtaddrs.c: In function ‘get_rtaddrs’:
+get_rtaddrs.c:21:18: error: ‘RTAX_MAX’ undeclared (first use in this function)
+  for (i = 0; i < RTAX_MAX; i++) {
+                  ^
+get_rtaddrs.c:21:18: note: each undeclared identifier is reported only once for each function it appears in
+get_rtaddrs.c:13:21: error: ‘struct sockaddr’ has no member named ‘sa_len’
+  ((caddr_t) ap + (ap->sa_len ? ROUNDUP(ap->sa_len, sizeof (u_long)) : \
+                     ^
+get_rtaddrs.c:24:4: note: in expansion of macro ‘NEXT_SA’
+    NEXT_SA(sa);
+    ^
+get_rtaddrs.c:13:42: error: ‘struct sockaddr’ has no member named ‘sa_len’
+  ((caddr_t) ap + (ap->sa_len ? ROUNDUP(ap->sa_len, sizeof (u_long)) : \
+                                          ^
+get_rtaddrs.c:6:29: note: in definition of macro ‘ROUNDUP’
+ #define ROUNDUP(a, size) (((a) & ((size)-1)) ? (1 + ((a) | ((size)-1))) : (a))
+                             ^
+get_rtaddrs.c:24:4: note: in expansion of macro ‘NEXT_SA’
+    NEXT_SA(sa);
+    ^
+get_rtaddrs.c:13:42: error: ‘struct sockaddr’ has no member named ‘sa_len’
+  ((caddr_t) ap + (ap->sa_len ? ROUNDUP(ap->sa_len, sizeof (u_long)) : \
+                                          ^
+get_rtaddrs.c:6:55: note: in definition of macro ‘ROUNDUP’
+ #define ROUNDUP(a, size) (((a) & ((size)-1)) ? (1 + ((a) | ((size)-1))) : (a))
+                                                       ^
+get_rtaddrs.c:24:4: note: in expansion of macro ‘NEXT_SA’
+    NEXT_SA(sa);
+    ^
+get_rtaddrs.c:13:42: error: ‘struct sockaddr’ has no member named ‘sa_len’
+  ((caddr_t) ap + (ap->sa_len ? ROUNDUP(ap->sa_len, sizeof (u_long)) : \
+                                          ^
+get_rtaddrs.c:6:76: note: in definition of macro ‘ROUNDUP’
+ #define ROUNDUP(a, size) (((a) & ((size)-1)) ? (1 + ((a) | ((size)-1))) : (a))
+                                                                            ^
+get_rtaddrs.c:24:4: note: in expansion of macro ‘NEXT_SA’
+    NEXT_SA(sa);
+    ^
+make: *** [get_rtaddrs.o] 错误 1

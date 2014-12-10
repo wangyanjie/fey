@@ -1,0 +1,55 @@
+
+import java.sql.SQLException;
+import ConnectionPool.PooledConnection;
+import com.vl.Config;
+
+public class DBManager {
+	private static ConnectionPool.PooledConnection conn;
+	private static ConnectionPool connectionPool;
+	private static DBManager inst;
+	
+	private static String mysqlHost = "localhost";
+	private static String mysqlPort = "3306";
+	private static String mysqlDB = "web_album";
+	private static String mysqlUser = "root";
+	private static String mysqlPWD = "wyj199211286110";
+
+	public void close() {
+		try {
+			connectionPool.closeConnectionPool();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public DBManager() {
+		if (inst != null)
+			return;
+		String connStr = "jdbc:mysql://" + mysqlHost + ":" + mysqlPort + "/" + mysqlDB;
+		connectionPool = new ConnectionPool("com.mysql.jdbc.Driver", connStr, mysqlUser, mysqlPWD);
+		try {
+			connectionPool.createPool();
+			inst = this;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static PooledConnection getConnection() {
+		if (inst == null)
+			new DBManager();
+		try {
+			conn = connectionPool.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
+
+	public static void main(String[] args) {
+	}
+
+}
+
+

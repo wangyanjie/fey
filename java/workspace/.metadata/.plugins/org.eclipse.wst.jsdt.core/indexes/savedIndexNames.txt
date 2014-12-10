@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+/home/fey/code/java/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3966953084.index
+2530650415.index
+713414006.index
+2317674973.index
+2301920924.index
+1167439271.index
+3200315297.index
+809311741.index

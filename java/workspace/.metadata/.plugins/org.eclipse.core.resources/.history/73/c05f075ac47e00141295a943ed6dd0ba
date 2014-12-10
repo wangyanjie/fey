@@ -1,0 +1,8 @@
+package org.tool;
+
+public class Photo {
+	public String owner_directory;
+	public int id;
+	public String name;
+	public Date createDate;
+}

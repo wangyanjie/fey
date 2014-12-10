@@ -1,0 +1,159 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="<%=basePath%>">
+    <title>WEB_ALBUM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta name="Keywords" content="POCO,MYPOCO,博客,摄影,美食">
+	<meta name="Description" content="POCO,MYPOCO,博客,摄影,美食">
+    <link rel="stylesheet" type="text/css" href="lib/index.css">
+    <link rel="stylesheet" type="text/css" href="lib/pop2.css">
+    <link rel="stylesheet" type="text/css" href="lib/compatible.css">
+
+    <style type="text/css">
+	#manage_content_left { float:left;  width:0px;   }
+	#manage_content_right { float:right;   width:0px;  }
+	#manage_content_center_div	{ float:left;   width:970px; }
+	#manage_content_center_top {   clear:both;    }
+	</style>
+    <script language="javascript" src="lib/mootools-1_002.js"></script>
+	<script language="javascript" src="lib/mootools-1.js"></script>
+	<script language="javascript" src="lib/mypoco_adapter.js"></script>
+	<script language="javascript" src="lib/mypoco_class.js"></script>
+	<script language="javascript" src="lib/mypoco_show_frame.js"></script>
+	<script language="javascript" src="lib/mypoco_element_display_class.js"></script>
+	<script language="javascript" src="lib/mypoco_taber.js"></script>
+	<script language="javascript" src="lib/mypoco_common_js_func.js"></script>
+
+</head>
+  
+<body>
+    
+    <!-- 内容部分 开始 -->
+	<div id="manage_content">
+	<div id="manage_content_center_div">
+    <div id="manage_content_center"><style>.pic img{ max-width:120px }</style>
+		
+		<link rel="stylesheet" type="text/css" href="lib/photo.css">
+		<link rel="stylesheet" type="text/css" href="lib/common_v2.css">
+		<script src="lib/poco_common_v2.js" type="text/javascript"></script>
+		<script type="text/javascript" language="javascript" src="lib/admin_album_common.js"></script>
+		<script type="text/javascript" language="javascript" src="lib/admin_update_item.js"></script>
+		<div class="thx"><br></div>
+		<div class="list-page w994 clearfix">
+		<div class="main fldi">
+        	<div class="title fb">fey相册的全部照片</div>
+            	<div class="option mb20" style="margin-bottom:20px">
+            	<input onclick="selCheckbox(this,'item_id_arr[]',0)" type="checkbox">
+            	<label class="pr5 pl5">全选</label>|
+                <a href="#this" onclick="edit_item_info(4144476)">修改照片信息</a>
+                <a href="#this" onclick="show_move_items_box(4144476)">移动到</a>
+                <a href="#this" onclick="del_items()">删除</a>
+            </div>
+            
+            <ul class="opus-list clearfix">
+		    	<li>
+                <div class="check">
+                <input name="item_id_arr[]" value="203404672" type="checkbox">
+                <label class="pl5">
+                <span class="J_edit" field="title" item_id="203404672">pic1</span>
+                </label>
+                </div>
+                <div class="pic pt5">
+                <a href="http://my.poco.cn/album/admin_album_item_details.php?item_id=203404672" target="_blank">
+                <img src="image/pic1.jpg">
+                </a>
+                </div>
+                </li>
+				
+				<li>
+                <div class="check">
+                <input name="item_id_arr[]" value="203404664" type="checkbox">
+                <label class="pl5">
+                <span class="J_edit" field="title" item_id="203404664">pic2</span>
+                </label>
+                </div>
+                <div class="pic pt5">
+                <a href="http://my.poco.cn/album/admin_album_item_details.php?item_id=203404664" target="_blank">
+                <img src="image/pic2.jpg"></a>
+                </div>
+                </li>
+                
+			</ul>
+			
+			<div class="page">
+				<span style="line-height:18px;"></span>
+				<span style="line-height:18px;"></span>
+			</div>
+		</div>
+        
+        <div class="sidebar frdi">
+			<div class="ph_bat1">
+				<div class="ph_bat4">
+				<div class="bat4_pf"></div>
+				<div class="bat4_pic">
+				<table border="0" cellpadding="0" cellspacing="0" height="151" width="118">
+					<tbody><tr><td valign="bottom" align="left">
+					<img class="item_thumbnail" src="image/pic4.jpg"  width=120 height=120 alt="">
+					</td></tr></tbody>
+				</table>
+				</div>
+				</div>
+				
+				<strong>fey</strong>
+				
+				<form name="post_form" id="post_form" action="admin_album_act.php" method="post" 
+					target="post_frame" style="margin:0px;">
+					<div class="ph_bar2t">
+					<a href="javascript:bath_upload(4144476);">上传照片</a>&nbsp;&nbsp;
+					<a href="javascript:edit_sets(4144476)">修改属性</a><br>
+					&nbsp;&nbsp;
+					<a href="javascript:del_sets(4144476,'album_manage_text.php')">删除相册</a>
+					</div>
+				</form>
+			</div>
+			
+			<div class="ph_bar2">
+				<table border="0" cellpadding="0" cellspacing="0" width="145">
+				  	<tbody><tr>
+					<td style="word-break:break-all;"></td>
+				  	</tr></tbody>
+				</table>
+				&nbsp;相册分类：其它主题<br>
+				&nbsp;照 片 数：2<br>				
+				&nbsp;创 建 于：2014-12-07<br>
+				&nbsp;访问权限：本相册已公开			
+			</div>		
+        </div>    
+	</div>
+ 	<div style="clear:both"></div>
+ 	
+ 	<script type="text/javascript" language="javascript">
+ 	var edit_item 	  = $$('.J_edit');
+ 	var edit_item_len = edit_item.length;
+ 	for( i=0;i<edit_item_len;i++ ){
+		edit_item[i].onclick = function(){
+			listEdit(this,this.getAttribute('field'),this.getAttribute('item_id'));
+		}
+ 	}
+ 	</script>
+ 	
+ 	</div>
+    </div>
+    <div style="clear:both;"></div>
+    </div>
+<!-- 内容部分 结束 -->
+    
+    
+    
+    
+    
+</body>
+</html>

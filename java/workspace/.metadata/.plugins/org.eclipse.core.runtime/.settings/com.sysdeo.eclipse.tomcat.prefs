@@ -1,0 +1,7 @@
+computeSourcePath=true
+contextsDir=/home/fey/tools/apache-tomcat-7.0.57/conf/Catalina/localhost
+eclipse.preferences.version=1
+managerUrl=http\://localhost\:8080/manager
+tomcatConfigFile=/home/fey/tools/apache-tomcat-7.0.57/conf/server.xml
+tomcatDir=/home/fey/tools/apache-tomcat-7.0.57
+tomcatVersion=tomcatV7

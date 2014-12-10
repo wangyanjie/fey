@@ -1,0 +1,11 @@
+package org.tool;
+
+import java.util.Date;
+
+public class Photo {
+	public String owner_directory;
+	public int id;
+	public String name;
+	public Date createDate;
+	public String description;
+}

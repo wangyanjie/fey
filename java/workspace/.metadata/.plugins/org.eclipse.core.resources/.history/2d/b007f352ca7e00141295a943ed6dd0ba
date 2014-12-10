@@ -1,0 +1,113 @@
+package org.tool;
+
+import org.dao.*;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class Tools {
+	private DBManager db;
+	
+	public boolean Authentication(String u_name, String u_pwd) {
+		boolean result = false;
+		String sql = "select u_pwd from album_user where u_name = " + u_name;
+		ResultSet rs;
+		PooledConnection conn = null;
+		try{
+			conn = db.getConnection();
+			rs = conn.executeQuery(sql);
+			if(rs.next()) {
+				result = u_pwd.equals(rs.getString(1));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
+		return result;
+	}
+	
+	public ArrayList<Directory> getDirectories(String u_name) {
+		ArrayList<Directory> directories = new ArrayList<Directory>();
+		
+		String sql = "select album_directory.d_id, album_directory.d_name from album_directory "
+				+ "where album_directory.u_id = album_user.u_id and album_user.u_name = " + u_name;
+		ResultSet rs;
+		PooledConnection conn = null;
+		
+		try {
+			conn = db.getConnection();
+			rs = conn.executeQuery(sql);
+			while(rs.next()) {
+				directories.add(new Directory(u_name, rs.getInt(1), rs.getString(2), null));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace() ;
+		} finally {
+			conn.close() ;
+		}
+		return directories;
+	}
+	
+	public ArrayList<Photo> getPhotos(String d_name) {
+		ArrayList<Photo> photos = new ArrayList<Photo>() ;
+		String sql = "select album_photo.p_id, album_photo.p_name, album_photo.p_path, "
+				+ "album_photo.p_description from album_photo "
+				+ "where album_photo.d_id = album_directory.d_id and album_directory.d_name = " + d_name;
+		ResultSet rs;
+		PooledConnection conn = null;
+		
+		try {
+			conn = db.getConnection() ;
+			rs = conn.executeQuery(sql) ;
+			while(rs.next()) {
+				photos.add(new Photo(d_name, rs.getInt(1), rs.getString(2), rs.getString(3), 
+						null, rs.getString(4)));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace() ;
+		} finally {
+			conn.close() ;
+		}
+		
+		return photos;
+	}
+	
+	public void addUser(String u_name, String u_pwd) {
+		String sql = "insert into album_user values (null, " + u_name + ", " + u_pwd + ");";
+		PooledConnection conn = null;
+		
+		try {
+			conn = db.getConnection();
+			conn.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
+	}
+	
+	public void addDirectores(String u_name, String d_name) {
+		int u_id = -1;
+		String sql = "select u_id from album_user where u_name = " + u_name;
+		ResultSet rs;
+		PooledConnection conn = null;
+		
+		try {
+			conn = db.getConnection();
+			rs = conn.executeQuery(sql);
+			if(rs.next()) {
+				u_id = rs.getInt(1);
+			}
+			sql = "insert into album_directory values (null, " + d_name + ", " + u_id + ");";
+			conn.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
+	}
+	
+}

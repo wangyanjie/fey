@@ -1,0 +1,8 @@
+package org.tool;
+
+public class Directory {
+	private String owner;
+	private int id;
+	private String name;
+	private Date date;
+}

@@ -1,0 +1,5 @@
+package org.tool;
+
+public class Directory {
+	private string owner;
+}
